@@ -1,11 +1,9 @@
 const path = require('path');
-
 module.exports = {
-  "mode": "production",
-  "entry": "server/index.js",
+  "entry": path.join(__dirname, 'client/App.jsx'),
   "output": {
-      "path": __dirname+'/public',
-      "filename": "[name].[chunkhash:8].js"
+      "path": path.join(__dirname, 'public'),
+      "filename": "bundle.js"
   },
   "devtool": "source-map",
   "module": {
