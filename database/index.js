@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const sequelize = new Sequelize('fec8-related-products', 'root', '', {
+const sequelize = new Sequelize('fec8_related_products', 'root', '', {
   host: 'localhost',
   dialect: 'mysql'
 });
