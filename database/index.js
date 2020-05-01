@@ -38,8 +38,11 @@ module.exports = {
   products: {
     getRelated(id, callback) {
       return Product.findAll()
-        .then((err, products) => {
-          callback(err, products);
+        .then((products) => {
+          callback(null, products);
+        })
+        .catch((err) => {
+          callback(err);
         });
     },
   },
