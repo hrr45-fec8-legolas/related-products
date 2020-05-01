@@ -19,4 +19,17 @@ module.exports = {
         .catch((error) => error);
     },
   },
+
+  categories: {
+    getAll() {
+      return db.Category.findAll();
+    },
+    addNew(category) {
+      db.Category.create(category)
+        .then((newCat) => {
+          return newCat;
+        })
+        .catch((error) => error);
+    },
+  },
 };
