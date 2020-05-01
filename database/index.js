@@ -9,15 +9,6 @@ const db = new Sequelize('fec8_related_products', 'root', '', {
   },
 });
 
-// sequelize
-//   .authenticate()
-//   .then(() => {
-//     console.log('Connection has been established successfully.');
-//   })
-//   .catch((err) => {
-//     console.error('Unable to connect to the database:', err);
-//   });
-
 const Product = db.define('Product', {
   product_id: {
     type: DataTypes.INTEGER,
@@ -32,7 +23,7 @@ const Product = db.define('Product', {
   avg_rating: DataTypes.FLOAT,
 });
 
-Product.sync();
+// Product.sync();
 
 module.exports = {
   products: {
@@ -45,5 +36,13 @@ module.exports = {
           callback(err);
         });
     },
+    addNew(product) {
+      Product.create(product)
+        .then((newProduct) => {
+          return newProduct;
+        })
+        .catch((error) => error);
+    },
   },
+  connection: db,
 };
