@@ -1,9 +1,8 @@
 const db = require('./index.js');
 const faker = require('faker');
 
-// Drop all tables
 // Sync all tables
-
+db.connection.sync();
 // Get array of image urls from S3
 
 // Generate 10 categories
