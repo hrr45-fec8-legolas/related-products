@@ -1,20 +1,34 @@
-const db = require('./index.js');
-const models = require('../models');
 const faker = require('faker');
+const db = require('./index.js');
 
-const seedDatabase = async function () {
-  // Sync all tables
-  db.connection.sync();
-  // Get array of image urls from S3
-  let images = ['img1', 'img2'];
-
-  // Generate 10 categories
-  for (let i = 0; i < 10; i++) {
+async function seedDatabase() {
+  await db.connection.sync();
+  let cats = new Set();
+  while (cats.size < 10) {
     const name = faker.random.word();
-    models.categories.addNew({ name });
+    cats.add(name);
   }
-  // Add categories to db
-  // Get category id's as array
+  cats = Array.from(cats);
+  cats = cats.map((cat) => ({ name: cat }));
+  // const categories = await db.Category.bulkCreate(cats, { ignoreDuplicates: true });
+  const images = ['img1', 'img2', 'img3'];
+  const imglen = images.length;
+  const newProds = [];
+  let i = 1;
+  while (newProds.length < 100) {
+    newProds.push({
+      productId: i,
+      name: faker.commerce.productName(),
+      price: faker.commerce.price(),
+      prime: Math.floor(Math.random() * 2),
+      imageUrl: i > imglen ? images[i % imglen] : images[i],
+      numReviews: faker.random.number(),
+      avgRating: (Math.floor(Math.random() * 11)) / 2,
+    });
+    i += 1;
+  }
+  const products = await db.Product.bulkCreate(newProds);
+  // console.log(newProds);
 
   // Generate newProducts data
   // Use Products.bulkCreate(newProducts) to add all new products to db
