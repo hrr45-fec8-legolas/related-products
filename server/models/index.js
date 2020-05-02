@@ -12,10 +12,7 @@ module.exports = {
         });
     },
     addNew(product) {
-      db.Product.create(product)
-        .then((newProduct) => {
-          return newProduct;
-        })
+      return db.Product.create(product)
         .catch((error) => error);
     },
   },
@@ -25,10 +22,7 @@ module.exports = {
       return db.Category.findAll();
     },
     addNew(category) {
-      db.Category.create(category)
-        .then((newCat) => {
-          return newCat;
-        })
+      return db.Category.create(category)
         .catch((error) => error);
     },
   },
