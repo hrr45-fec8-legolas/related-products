@@ -31,9 +31,21 @@ const Category = db.define('category', {
   },
 });
 
-
 const ProductCategory = db.define('productCategory', {
-
+  productId: {
+    type: DataTypes.INTEGER,
+    references: {
+      model: Product,
+      key: 'id',
+    },
+  },
+  categoryId: {
+    type: DataTypes.INTEGER,
+    references: {
+      model: Category,
+      key: 'id',
+    },
+  },
 });
 
 const Feedback = db.define('feedback', {
@@ -43,14 +55,15 @@ const Feedback = db.define('feedback', {
   freezeTableName: true,
 });
 
-// Associations
-Product.hasMany(ProductCategory);
-Category.hasMany(ProductCategory);
+// Associations ===================================================
+// Many to many between products and categories
+Product.belongsToMany(Category, { through: ProductCategory });
+Category.belongsToMany(Product, { through: ProductCategory });
+
+// One to many relationship between feedback and ProdCat associations
 ProductCategory.hasMany(Feedback);
+Feedback.belongsTo(ProductCategory);
 
-// db.sync();
-
-// Product.sync();
 module.exports = {
   connection: db,
   Product,
