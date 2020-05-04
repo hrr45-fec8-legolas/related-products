@@ -11,9 +11,14 @@ module.exports = {
           callback(err);
         });
     },
-    addNew(product) {
-      return db.Product.create(product)
-        .catch((error) => error);
+    addNew(params, callback = () => {}) {
+      const sql = 'INSERT INTO products (productId, name, price, prime, imageUrl, numReviews, avgRating) VALUES (?, ?, ?, ?, ?, ?, ?)';
+      db.query(sql, params, (err, results) => {
+        if (err) {
+          callback(err);
+        }
+        callback(null, results);
+      });
     },
   },
 
@@ -29,7 +34,7 @@ module.exports = {
           callback(err);
         }
         callback(null, results);
-      })
+      });
     },
   },
 };

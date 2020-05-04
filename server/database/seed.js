@@ -9,28 +9,31 @@ async function seedDatabase() {
     const name = faker.random.word();
     cats.add(name);
   }
-  cats.forEach(async (cat) => {
+  await cats.forEach(async (cat) => {
     await models.categories.addNew(cat);
   });
 
-  // // Generate newProducts data
-  // const images = ['img1', 'img2', 'img3'];
-  // const imglen = images.length;
-  // const newProds = [];
-  // let i = 1;
-  // while (newProds.length < 100) {
-  //   newProds.push({
-  //     productId: i,
-  //     name: faker.commerce.productName(),
-  //     price: faker.commerce.price(),
-  //     prime: Math.floor(Math.random() * 2),
-  //     imageUrl: i > imglen ? images[i % imglen] : images[i],
-  //     numReviews: faker.random.number(),
-  //     avgRating: (Math.floor((Math.random() * 6) + 5)) / 2,
-  //   });
-  //   i += 1;
-  // }
-  // await db.Product.bulkCreate(newProds);
+  // Generate newProducts data
+  const images = ['img1', 'img2', 'img3'];
+  const imglen = images.length;
+  const newProds = [];
+  let i = 1;
+  while (newProds.length < 100) {
+    // create array for each product
+    // [productId, name, price, prime, imageUrl, numReviews, avgRating]
+    newProds.push([i,
+      faker.commerce.productName(),
+      faker.commerce.price(),
+      Math.floor(Math.random() * 2),
+      i > imglen ? images[i % imglen] : images[i],
+      faker.random.number(),
+      (Math.floor((Math.random() * 6) + 5)) / 2,
+    ]);
+    i += 1;
+  }
+  await newProds.forEach(async (product) => {
+    await models.products.addNew(product);
+  });
 
   // // Create associations between products/categories
   // for (let j = 1; j < 101; j += 1) {
