@@ -14,15 +14,29 @@ class App extends React.Component {
     this.state = {
       products: [],
     };
+    this.previous = this.previous.bind(this);
+    this.next = this.next.bind(this);
+  }
+
+  previous() {
+    if (this.state) {
+      // Do nothing for now
+    }
+  }
+
+  next() {
+    if (this.state) {
+      // Do nothing for now
+    }
   }
 
   render() {
     return (
       <>
         <PageCount />
-        <Arrow />
+        <Arrow direction="left" nextPane={this.previous} />
         <ProductList />
-        <Arrow />
+        <Arrow direction="right" nextPane={this.next} />
         <FeedbackToggle />
       </>
     );

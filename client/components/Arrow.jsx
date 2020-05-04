@@ -1,8 +1,8 @@
 import React from 'react';
 
-function Arrow() {
+function Arrow({ direction, nextPane }) {
   return (
-    <div>Arrow</div>
+    <button type="button" onClick={nextPane}>{direction}</button>
   );
 }
 
