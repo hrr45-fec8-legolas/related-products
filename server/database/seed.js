@@ -38,7 +38,6 @@ async function seedDatabase() {
   // Create associations between products/categories
   for (let j = 1; j < 101; j += 1) {
     const prodCats = new Set();
-    const associations = [];
     while (prodCats.size < 2) {
       prodCats.add(Math.ceil(Math.random() * 10));
     }
