@@ -14,10 +14,7 @@ module.exports = {
     addNew(params, callback = () => {}) {
       const sql = 'INSERT INTO products (productId, name, price, prime, imageUrl, numReviews, avgRating) VALUES (?, ?, ?, ?, ?, ?, ?)';
       db.query(sql, params, (err, results) => {
-        if (err) {
-          callback(err);
-        }
-        callback(null, results);
+        callback(err, results);
       });
     },
   },
@@ -30,10 +27,16 @@ module.exports = {
       const sql = 'INSERT INTO categories (name) VALUES (?)';
 
       db.query(sql, category, (err, results) => {
-        if (err) {
-          callback(err);
-        }
-        callback(null, results);
+        callback(err, results);
+      });
+    },
+  },
+
+  productCategories: {
+    addNew(params, callback = () => {}) {
+      const sql = 'INSERT INTO productCategories (id_products, id_categories) VALUES (?, ?)';
+      db.query(sql, params, (err, results) => {
+        callback(err, results);
       });
     },
   },

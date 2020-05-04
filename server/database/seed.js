@@ -35,18 +35,19 @@ async function seedDatabase() {
     await models.products.addNew(product);
   });
 
-  // // Create associations between products/categories
-  // for (let j = 1; j < 101; j += 1) {
-  //   const prodCats = new Set();
-  //   const associations = [];
-  //   while (prodCats.size < 2) {
-  //     prodCats.add(Math.ceil(Math.random() * 10));
-  //   }
-  //   prodCats.forEach((categoryId) => {
-  //     associations.push({ productId: j, categoryId });
-  //   });
-  //   db.ProductCategory.bulkCreate(associations);
-  // }
+  // Create associations between products/categories
+  for (let j = 1; j < 101; j += 1) {
+    const prodCats = new Set();
+    const associations = [];
+    while (prodCats.size < 2) {
+      prodCats.add(Math.ceil(Math.random() * 10));
+    }
+    prodCats.forEach(async (categoryId) => {
+      // Create params array for each productCategory relationship
+      // [id_products, id_categories]
+      await models.productCategories.addNew([j, categoryId]);
+    });
+  }
 }
 
 seedDatabase();
