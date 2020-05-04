@@ -21,9 +21,15 @@ module.exports = {
     getAll() {
       return db.Category.findAll();
     },
-    addNew(category) {
-      return db.Category.create(category)
-        .catch((error) => error);
+    addNew(category, callback = () => {}) {
+      const sql = 'INSERT INTO categories (name) VALUES (?)';
+
+      db.query(sql, category, (err, results) => {
+        if (err) {
+          callback(err);
+        }
+        callback(null, results);
+      })
     },
   },
 };
