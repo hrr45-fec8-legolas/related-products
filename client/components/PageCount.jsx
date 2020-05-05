@@ -1,9 +1,5 @@
 import React from 'react';
 
-function PageCount() {
-  return (
-    <div>PageCount</div>
-  );
-}
+const PageCount = () => (<div>PageCount</div>);
 
 export default PageCount;

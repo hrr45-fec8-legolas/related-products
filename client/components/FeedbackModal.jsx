@@ -1,9 +1,9 @@
 import React from 'react';
 
-function FeedbackModal() {
+const FeedbackModal = () => {
   return (
     <div>FeedbackModal</div>
   );
-}
+};
 
 export default FeedbackModal;

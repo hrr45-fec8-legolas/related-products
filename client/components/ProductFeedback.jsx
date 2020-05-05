@@ -1,9 +1,9 @@
 import React from 'react';
 
-function ProductFeedback() {
+const ProductFeedback = () => {
   return (
     <div>ProductFeedback</div>
   );
-}
+};
 
 export default ProductFeedback;

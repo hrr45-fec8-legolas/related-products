@@ -1,14 +1,19 @@
 import React from 'react';
+import propTypes from 'prop-types';
 
 import ProductFeedback from './ProductFeedback';
 
-function ProductListItem({ product }) {
+const ProductListItem = ({ product }) => {
   return (
     <div className="single-product">
       <ProductFeedback />
-      <div></div>
+      <div>{ product }</div>
     </div>
   );
-}
+};
+
+ProductListItem.propTypes = {
+  product: propTypes.shape({}).isRequired,
+};
 
 export default ProductListItem;
