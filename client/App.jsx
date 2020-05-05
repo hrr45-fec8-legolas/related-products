@@ -49,11 +49,12 @@ class App extends React.Component {
   }
 
   render() {
+    const { products } = this.state;
     return (
       <>
         <PageCount />
         <Arrow direction="left" nextPane={this.previous} />
-        <ProductList products={this.state.products} />
+        <ProductList products={products} />
         <Arrow direction="right" nextPane={this.next} />
         <FeedbackToggle />
       </>
