@@ -10,7 +10,6 @@ const ProductList = ({ products }) => {
       product={product}
     />
   ));
-  console.log(prods);
   return (
     <div className="related-product-list">
       { prods }
