@@ -7,6 +7,7 @@ module.exports = {
       db.query(sql, [productId], (err, results) => {
         callback(err, results);
       });
+
     },
     addNew(params, callback = () => {}) {
       const sql = 'INSERT INTO products (productId, name, price, prime, imageUrl, numReviews, avgRating) VALUES (?, ?, ?, ?, ?, ?, ?)';
