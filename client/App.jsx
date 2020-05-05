@@ -12,7 +12,25 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      products: [{ id: 1, productId: 1, name: 'Test' }, { id: 2, productId: 2, name: 'Test number 2' }],
+      products: [{
+        id: 1,
+        productId: 1,
+        name: 'Test',
+        price: 452.00,
+        prime: 1,
+        imageUrl: 'test.jpg',
+        numReviews: 123456,
+        avgRating: 4.5,
+      }, {
+        id: 2,
+        productId: 2,
+        name: 'Second product',
+        price: 32.00,
+        prime: 0,
+        imageUrl: 'test2.jpg',
+        numReviews: 1496,
+        avgRating: 3.5,
+      }],
     };
     this.previous = this.previous.bind(this);
     this.next = this.next.bind(this);
