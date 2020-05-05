@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import PageCount from './components/PageCount.jsx';
-import Arrow from './components/Arrow.jsx';
-import ProductList from './components/ProductList.jsx';
-import FeedbackToggle from './components/FeedbackToggle.jsx';
+import PageCount from './components/PageCount';
+import Arrow from './components/Arrow';
+import ProductList from './components/ProductList';
+import FeedbackToggle from './components/FeedbackToggle';
 
 
 // console.log('Webpack is watching for changes!');
@@ -12,7 +12,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      products: [],
+      products: [{ id: 1, productId: 1, name: 'Test' }, { id: 2, productId: 2, name: 'Test number 2' }],
     };
     this.previous = this.previous.bind(this);
     this.next = this.next.bind(this);
@@ -35,7 +35,7 @@ class App extends React.Component {
       <>
         <PageCount />
         <Arrow direction="left" nextPane={this.previous} />
-        <ProductList />
+        <ProductList products={this.state.products} />
         <Arrow direction="right" nextPane={this.next} />
         <FeedbackToggle />
       </>
