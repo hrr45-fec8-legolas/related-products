@@ -52,10 +52,15 @@ class App extends React.Component {
     const { products } = this.state;
     return (
       <>
-        <PageCount />
-        <Arrow direction="left" nextPane={this.previous} />
-        <ProductList products={products} />
-        <Arrow direction="right" nextPane={this.next} />
+        <div className="sponsored-products-meta">
+          <h2>Sponsored products related to this item</h2>
+          <PageCount />
+        </div>
+        <div className=>
+          <Arrow direction="left" nextPane={this.previous} />
+          <ProductList products={products} />
+          <Arrow direction="right" nextPane={this.next} />
+        </div>
         <FeedbackToggle />
       </>
     );
