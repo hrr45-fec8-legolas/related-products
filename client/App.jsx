@@ -56,7 +56,7 @@ class App extends React.Component {
           <h2>Sponsored products related to this item</h2>
           <PageCount />
         </div>
-        <div className=>
+        <div className="sponsored-products-list">
           <Arrow direction="left" nextPane={this.previous} />
           <ProductList products={products} />
           <Arrow direction="right" nextPane={this.next} />
