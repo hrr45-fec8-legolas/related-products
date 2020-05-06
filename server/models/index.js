@@ -4,7 +4,7 @@ module.exports = {
   products: {
     getRelated(productId, callback) {
       const sql = 'SELECT p.*, c.name AS category_name FROM products AS p INNER JOIN productCategories AS pcj ON pcj.id_products = p.id INNER JOIN categories AS c ON pcj.id_categories = c.id WHERE pcj.id_categories IN (SELECT pcj.id_categories FROM productCategories AS pcj INNER JOIN products AS p ON p.id = pcj.id_products WHERE p.productId = ?) ORDER BY avgRating DESC, numReviews DESC LIMIT 20';
-      db.query(sql, [productId], (err, results) => {
+      db.query(sql, productId, (err, results) => {
         callback(err, results);
       });
 
