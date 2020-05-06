@@ -21,6 +21,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    // eslint-disable-next-line no-undef
     const params = new URLSearchParams(document.location.search.substring(1));
     const id = params.get('id');
     this.getRelatedProducts(id);
@@ -29,11 +30,10 @@ class App extends React.Component {
   getRelatedProducts(id) {
     axios.get(`/api/related_products/${id}`)
       .then((results) => {
-        this.setState((state) => {
-          return {
-            products: results.data,
-          };
-        });
+        // eslint-disable-next-line no-unused-vars
+        this.setState((state) => ({
+          products: results.data,
+        }));
       })
       .catch((err) => console.error('Failed to load product data. => ', err));
   }
