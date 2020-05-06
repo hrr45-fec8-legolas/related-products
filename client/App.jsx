@@ -70,18 +70,27 @@ class App extends React.Component {
 
   render() {
     const { products } = this.state;
+    if (products.length > 0) {
+      return (
+        <>
+          <div className="sponsored-products-meta">
+            <h2>Sponsored products related to this item</h2>
+            <PageCount />
+          </div>
+          <div className="sponsored-products-list">
+            <Arrow direction="left" nextPane={this.previous} />
+            <ProductList products={products} />
+            <Arrow direction="right" nextPane={this.next} />
+          </div>
+          <FeedbackToggle />
+        </>
+      );
+    }
     return (
       <>
         <div className="sponsored-products-meta">
-          <h2>Sponsored products related to this item</h2>
-          <PageCount />
+          <h2>No product selected.</h2>
         </div>
-        <div className="sponsored-products-list">
-          <Arrow direction="left" nextPane={this.previous} />
-          <ProductList products={products} />
-          <Arrow direction="right" nextPane={this.next} />
-        </div>
-        <FeedbackToggle />
       </>
     );
   }
