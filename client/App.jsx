@@ -31,7 +31,7 @@ class App extends React.Component {
       .then((results) => {
         this.setState((state) => {
           return {
-            products: results,
+            products: results.data,
           };
         });
       })
