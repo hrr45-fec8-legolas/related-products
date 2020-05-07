@@ -28,6 +28,6 @@
 }
 
 .item-feedback-link a:hover {
-  color: orange;
+  color: #F69931;
   background: url('https://hrr45-fec8-legolas.s3-us-west-2.amazonaws.com/Amazon_feedback_bubble.png') no-repeat 130px -12px;
 }

@@ -8,6 +8,10 @@
   font-family: Arial, sans-serif;
 }
 
+.hover-color {
+  color: #F69931;
+}
+
 .sponsored-products-meta {
   composes: main-font;
   display: flex;
