@@ -2,7 +2,6 @@ const faker = require('faker');
 const models = require('../models');
 
 async function seedDatabase() {
-
   // Generate categories
   const cats = new Set();
   while (cats.size < 10) {
