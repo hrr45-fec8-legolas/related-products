@@ -1,9 +1,7 @@
 /* eslint-disable no-undef */
 const puppeteer = require('puppeteer');
-// import puppeteer from 'puppeteer';
 
-
-const pageUrl = 'http://127.0.0.1:3003/?id=10';
+const pageUrl = 'http://127.0.0.1:3003/?id=1';
 
 let page;
 let browser;
@@ -12,7 +10,7 @@ const height = 720;
 
 beforeAll(async () => {
   browser = await puppeteer.launch({
-    headless: true,
+    headless: false,
     slowMo: 80,
     args: [`--window-size=${width},${height}`],
   });
@@ -34,10 +32,6 @@ describe('Should render component with related products.', () => {
     const title = await page.$eval(div, (e) => e.textContent);
     expect(title).toEqual('Sponsored products related to this item');
   });
-
-  test.todo('Should not load duplicate products');
-
-  test.todo('Product should be in same category as current product');
 });
 
 describe('Should not render product list for product with no related products.', () => {
