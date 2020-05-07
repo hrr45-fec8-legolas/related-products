@@ -13,25 +13,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      products: [{
-        id: 1,
-        productId: 1,
-        name: 'Test',
-        price: 452.00,
-        prime: 1,
-        imageUrl: 'test.jpg',
-        numReviews: 123456,
-        avgRating: 4.5,
-      }, {
-        id: 2,
-        productId: 2,
-        name: 'Second product',
-        price: 32.00,
-        prime: 0,
-        imageUrl: 'test2.jpg',
-        numReviews: 1496,
-        avgRating: 3.5,
-      }],
+      products: [],
     };
     this.previous = this.previous.bind(this);
     this.next = this.next.bind(this);
@@ -39,6 +21,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    // eslint-disable-next-line no-undef
     const params = new URLSearchParams(document.location.search.substring(1));
     const id = params.get('id');
     this.getRelatedProducts(id);
@@ -47,11 +30,10 @@ class App extends React.Component {
   getRelatedProducts(id) {
     axios.get(`/api/related_products/${id}`)
       .then((results) => {
-        this.setState((state) => {
-          return {
-            products: results,
-          };
-        });
+        // eslint-disable-next-line no-unused-vars
+        this.setState((state) => ({
+          products: results.data,
+        }));
       })
       .catch((err) => console.error('Failed to load product data. => ', err));
   }
