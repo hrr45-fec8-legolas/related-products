@@ -2,8 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 
-import './css/style.css';
-import './css/reviews.css';
+import style from './css/app.css';
 import PageCount from './components/PageCount';
 import Arrow from './components/Arrow';
 import ProductList from './components/ProductList';
@@ -57,11 +56,11 @@ class App extends React.Component {
     if (products.length > 0) {
       return (
         <>
-          <div className="sponsored-products-meta">
+          <div className={style.sponsoredProductsMeta}>
             <h2>Sponsored products related to this item</h2>
             <PageCount />
           </div>
-          <div className="sponsored-products-list">
+          <div className={style.sponsoredProductsList}>
             <Arrow direction="left" nextPane={this.previous} />
             <ProductList products={products} />
             <Arrow direction="right" nextPane={this.next} />
