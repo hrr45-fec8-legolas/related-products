@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 
+import './css/style.css';
+import './css/reviews.css';
 import PageCount from './components/PageCount';
 import Arrow from './components/Arrow';
 import ProductList from './components/ProductList';
