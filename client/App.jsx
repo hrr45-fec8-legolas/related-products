@@ -15,10 +15,12 @@ class App extends React.Component {
     super(props);
     this.state = {
       products: [],
+      showFeedbackLinks: false,
     };
+    this.getRelatedProducts = this.getRelatedProducts.bind(this);
     this.previous = this.previous.bind(this);
     this.next = this.next.bind(this);
-    this.getRelatedProducts = this.getRelatedProducts.bind(this);
+    this.toggleFeedback = this.toggleFeedback.bind(this);
   }
 
   componentDidMount() {
@@ -51,27 +53,31 @@ class App extends React.Component {
     }
   }
 
+  toggleFeedback() {
+    this.setState((state) => ({ showFeedbackLinks: !state.showFeedbackLinks }));
+  }
+
   render() {
-    const { products } = this.state;
+    const { products, showFeedbackLinks } = this.state;
     if (products.length > 0) {
       return (
         <>
-          <div className={style.sponsoredProductsMeta}>
+          <div className={style['sponsored-products-meta']}>
             <h2>Sponsored products related to this item</h2>
             <PageCount />
           </div>
-          <div className={style.sponsoredProductsList}>
+          <div className={style['sponsored-products-list']}>
             <Arrow direction="left" nextPane={this.previous} />
-            <ProductList products={products} />
+            <ProductList products={products} showLinks={showFeedbackLinks} />
             <Arrow direction="right" nextPane={this.next} />
           </div>
-          <FeedbackToggle />
+          <FeedbackToggle showLinks={showFeedbackLinks} toggleFeedback={this.toggleFeedback} />
         </>
       );
     }
     return (
       <>
-        <div className="sponsored-products-meta">
+        <div className={style['sponsored-products-meta']}>
           <h2>No product selected.</h2>
         </div>
       </>

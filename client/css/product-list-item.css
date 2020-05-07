@@ -1,0 +1,9 @@
+.single-product {
+  position: relative;
+}
+
+.single-product img {
+  height: 160px;
+  width: 160px;
+  object-fit: contain;
+}

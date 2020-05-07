@@ -1,13 +1,14 @@
 import React from 'react';
 import propTypes from 'prop-types';
 
-import ProductFeedback from './ProductFeedback';
+import style from '../css/product-list-item.css';
+import FeedbackLink from './FeedbackLink';
 import Prime from './Prime';
 
-const ProductListItem = ({ product }) => {
+const ProductListItem = ({ product, showLinks }) => {
   return (
-    <div className="single-product">
-      <ProductFeedback />
+    <div className={style['single-product']}>
+      <FeedbackLink showLinks={showLinks} />
       <img src={product.imageUrl} alt={product.name} />
       <div className="product-title">{product.name}</div>
       <div className="product-ratings">
