@@ -1,13 +1,15 @@
+/* eslint-disable no-undef */
 const models = require('../server/models');
 const db = require('../server/database');
 
 afterAll(() => {
+  // eslint-disable-next-line no-unused-vars
   db.end((err) => {
     // All connections in the pool have ended.
   });
 });
 
-describe('Products methods', () => {
+describe('Product methods', () => {
   test('Results of getRelated should be defined', (done) => {
     models.products.getRelated(15, (err, results) => {
       if (err) done();
@@ -33,4 +35,8 @@ describe('Products methods', () => {
   test.todo('Should not load duplicate products');
 
   test.todo('Product should be in same category as current product');
+});
+
+describe('Category methods', () => {
+  test.todo('Should return an array of category IDs');
 });
