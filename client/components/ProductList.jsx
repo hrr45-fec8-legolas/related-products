@@ -18,7 +18,29 @@ const ProductList = ({ products }) => {
 };
 
 ProductList.propTypes = {
-  products: propTypes.arrayOf(propTypes.shape({})).isRequired,
+  products: propTypes.arrayOf(propTypes.shape({})),
+};
+
+ProductList.defaultProps = {
+  products: [{
+    id: 1,
+    productId: 1,
+    name: 'Test',
+    price: 452.00,
+    prime: 1,
+    imageUrl: 'test.jpg',
+    numReviews: 123456,
+    avgRating: 4.5,
+  }, {
+    id: 2,
+    productId: 2,
+    name: 'Second product',
+    price: 32.00,
+    prime: 0,
+    imageUrl: 'test2.jpg',
+    numReviews: 1496,
+    avgRating: 3.5,
+  }],
 };
 
 export default ProductList;

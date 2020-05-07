@@ -6,8 +6,13 @@ const Arrow = ({ direction, nextPane }) => (
 );
 
 Arrow.propTypes = {
-  direction: propTypes.string.isRequired,
-  nextPane: propTypes.func.isRequired,
+  direction: propTypes.string,
+  nextPane: propTypes.func,
+};
+
+Arrow.defaultProps = {
+  direction: 'left',
+  nextPane: () => {},
 };
 
 export default Arrow;

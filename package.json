@@ -12,7 +12,10 @@
     "build-dev": "webpack --config webpack.config.js --watch --mode development",
     "seed": "node server/database/seed.js",
     "server-dev": "nodemon server/",
-    "start": "node server/"
+    "start": "node server/",
+    "test": "jest --verbose --detectOpenHandles",
+    "test-coverage": "jest --verbose --coverage --colors --detectOpenHandles",
+    "test-watch": "jest --watch"
   },
   "dependencies": {
     "axios": "^0.19.2",
@@ -28,19 +31,31 @@
   },
   "devDependencies": {
     "@babel/core": "^7.9.6",
+    "@babel/polyfill": "^7.8.7",
     "@babel/preset-env": "^7.9.6",
     "@babel/preset-react": "^7.9.4",
+    "babel-jest": "^26.0.1",
     "babel-loader": "^8.1.0",
     "css-loader": "^3.5.3",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
+    "enzyme-to-json": "^3.4.4",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.1.0",
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^2.5.0",
-    "node-sass": "^4.14.0",
+    "jest": "^26.0.1",
+    "node-sass": "^4.14.1",
     "nodemon": "^2.0.3",
+    "puppeteer": "^3.0.2",
     "sass-loader": "^8.0.2",
     "style-loader": "^1.2.1"
+  },
+  "jest": {
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
   }
 }
