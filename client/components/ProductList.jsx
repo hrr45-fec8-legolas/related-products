@@ -1,17 +1,19 @@
 import React from 'react';
 import propTypes from 'prop-types';
 
+import styles from '../css/product-list.css';
 import ProductListItem from './ProductListItem';
 
-const ProductList = ({ products }) => {
+const ProductList = ({ products, showLinks }) => {
   const prods = products.map((product) => (
     <ProductListItem
       key={product.productId}
       product={product}
+      showLinks={showLinks}
     />
   ));
   return (
-    <div className="related-product-list">
+    <div className={styles['related-product-list']}>
       { prods }
     </div>
   );

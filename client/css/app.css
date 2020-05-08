@@ -1,0 +1,38 @@
+@import url(//db.onlinewebfonts.com/c/157c6cc36dd65b1b2adc9e7f3329c761?family=Amazon+Ember);
+
+.sponsored-products-module-wrapper {
+  font-size: 13px;
+  line-height: 19px;
+  font-family: 'Amazon Ember', Arial, sans-serif;
+}
+
+.sponsored-products-module-wrapper a {
+  text-decoration: none;
+  color: #0066C0;
+}
+
+.sponsored-products-module-wrapper a:hover {
+  text-decoration: underline;
+  color: #c45500;
+}
+
+.heading-font {
+  font-family: Arial, sans-serif;
+}
+
+/* .hover-color {
+  color: #F69931;
+} */
+
+.sponsored-products-meta {
+  composes: heading-font;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.sponsored-products-list {
+
+}

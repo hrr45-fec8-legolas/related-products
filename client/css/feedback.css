@@ -1,0 +1,49 @@
+.feedback-toggle {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-end;
+  font-size: 11px;
+}
+
+.feedback-toggle a {
+  padding: 0 19px 2px 0;
+  line-height: 11px;
+  margin: 0 0 0 2px;
+  display: inline-block;
+  background: url('https://hrr45-fec8-legolas.s3-us-west-2.amazonaws.com/Amazon_feedback-sprite.png') right 0 no-repeat;
+  background-size: 15px;
+}
+
+.feedback-toggle a:hover {
+  color: #E47911;
+  background: url('https://hrr45-fec8-legolas.s3-us-west-2.amazonaws.com/Amazon_feedback-sprite.png') right -13px no-repeat;
+  background-size: 15px;
+}
+
+.item-feedback-link {
+  composes: body-font from './app.css';
+  padding: 6px 2px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  text-decoration: none;
+  border-top: 1px solid #6daee1;
+  background-color: #f0f7fc;
+  background-color: rgba(240,247,252,.8);
+  border-bottom: 1px dotted #6daee1;
+  font-size: 12px;
+  position: absolute;
+}
+
+.item-feedback-link a {
+  color: #0066c0;
+  text-decoration: none;
+  display: block;
+  line-height: 12px;
+  background: url('https://hrr45-fec8-legolas.s3-us-west-2.amazonaws.com/Amazon_feedback_bubble.png') no-repeat 130px 0px;
+}
+
+.item-feedback-link a:hover {
+  color: #c45500;
+  background: url('https://hrr45-fec8-legolas.s3-us-west-2.amazonaws.com/Amazon_feedback_bubble.png') no-repeat 130px -12px;
+}

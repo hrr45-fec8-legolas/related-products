@@ -1,0 +1,78 @@
+.single-product {
+  position: relative;
+}
+
+.single-product img {
+  height: 160px;
+  width: 160px;
+  object-fit: contain;
+}
+
+.sprites {
+  background-image: url('https://hrr45-fec8-legolas.s3-us-west-2.amazonaws.com/Amazon_ui-icon-sprite-sheet.png');
+  background-size: 400px 900px;
+  background-repeat: no-repeat;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.stars {
+  composes: sprites;
+  width: 80px;
+  height: 18px;
+}
+
+.stars-5 {
+  composes: stars;
+  background-position: -4px -368px;
+}
+
+.stars-4-5 {
+  composes: stars;
+  background-position: -175px -368px;
+}
+
+.stars-4 {
+  composes: stars;
+  background-position: -21px -368px;
+}
+
+.stars-3-5 {
+  composes: stars;
+  background-position: -191px -368px;
+}
+
+.stars-3 {
+  composes: stars;
+  background-position: -37px -368px;
+}
+
+.stars-2-5 {
+  composes: stars;
+  background-position: -207px -368px;
+}
+
+.stars-2 {
+  composes: stars;
+  background-position: -53px -368px;
+}
+
+.stars-1-5 {
+  composes: stars;
+  background-position: -223px -368px;
+}
+
+.stars-1 {
+  composes: stars;
+  background-position: -69px -368px;
+}
+
+.stars-0-5 {
+  composes: stars;
+  background-position: -239px -368px;
+}
+
+.stars-0 {
+  composes: stars;
+  background-position: -85px -368px;
+}
