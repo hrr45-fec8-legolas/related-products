@@ -22,8 +22,9 @@ class App extends React.Component {
       itemGap: 10,
     };
     this.getRelatedProducts = this.getRelatedProducts.bind(this);
-    this.previous = this.previous.bind(this);
     this.next = this.next.bind(this);
+    this.previous = this.previous.bind(this);
+    this.startOver = this.startOver.bind(this);
     this.toggleFeedback = this.toggleFeedback.bind(this);
     this.updateNumItemsToDisplay = this.updateNumItemsToDisplay.bind(this);
   }
@@ -90,9 +91,13 @@ class App extends React.Component {
 
   startOver() {
     // This should return the first item in view to be at index 0.
-    this.setState({
+    this.setState((state) => ({
       firstItemInView: 0,
-    });
+      showFeedbackLinks: false,
+    }));
+    this.setState((state) => ({
+      itemsInView: state.relatedProducts.slice(state.firstItemInView, state.numItemsToDisplay),
+    }));
   }
 
   toggleFeedback() {
@@ -112,13 +117,27 @@ class App extends React.Component {
   }
 
   render() {
-    const { itemsInView, showFeedbackLinks, itemGap } = this.state;
+    const {
+      itemsInView,
+      showFeedbackLinks,
+      itemGap,
+      firstItemInView,
+      relatedProducts,
+      numItemsToDisplay,
+    } = this.state;
+    const totalPages = Math.ceil(relatedProducts.length / numItemsToDisplay);
+    const currentPage = Math.ceil(firstItemInView / numItemsToDisplay) + 1;
     if (itemsInView.length > 0) {
       return (
         <div className={style['sponsored-products-module-wrapper']}>
           <div className={style['sponsored-products-meta']}>
             <h2>Sponsored products related to this item</h2>
-            <PageCount />
+            <PageCount
+              firstItem={firstItemInView}
+              page={currentPage}
+              pages={totalPages}
+              startOver={this.startOver}
+            />
           </div>
           <div className={style['sponsored-products-list']}>
             <Arrow direction="left" nextPane={this.previous} />
