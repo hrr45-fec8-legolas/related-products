@@ -4,7 +4,7 @@ import propTypes from 'prop-types';
 import styles from '../css/product-list.css';
 import ProductListItem from './ProductListItem';
 
-const ProductList = ({ products, showLinks }) => {
+const ProductList = ({ products, showLinks, itemGap }) => {
   const prods = products.map((product) => (
     <ProductListItem
       key={product.productId}
@@ -13,7 +13,7 @@ const ProductList = ({ products, showLinks }) => {
     />
   ));
   return (
-    <div className={styles['related-product-list']}>
+    <div className={styles['related-product-list']} style={{ gap: itemGap +'px' }}>
       { prods }
     </div>
   );

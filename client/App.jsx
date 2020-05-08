@@ -16,30 +16,28 @@ class App extends React.Component {
     this.state = {
       relatedProducts: [],
       showFeedbackLinks: false,
-      windowWidth: 0,
       numItemsToDisplay: 10,
       firstItemInView: 0,
       itemsInView: [],
+      itemGap: 10,
     };
     this.getRelatedProducts = this.getRelatedProducts.bind(this);
     this.previous = this.previous.bind(this);
     this.next = this.next.bind(this);
     this.toggleFeedback = this.toggleFeedback.bind(this);
-    this.updateViewportWidth = this.updateViewportWidth.bind(this);
+    this.updateNumItemsToDisplay = this.updateNumItemsToDisplay.bind(this);
   }
 
   componentDidMount() {
-    this.updateViewportWidth();
-    window.addEventListener('resize', this.updateViewportWidth);
-
     // eslint-disable-next-line no-undef
     const params = new URLSearchParams(document.location.search.substring(1));
     const id = params.get('id');
     this.getRelatedProducts(id);
+    window.addEventListener('resize', this.updateNumItemsToDisplay);
   }
 
   componentWillUnmount() {
-    window.removeEventListener('resize', this.updateViewportWidth);
+    window.removeEventListener('resize', this.updateNumItemsToDisplay);
   }
 
   getRelatedProducts(id) {
@@ -49,13 +47,13 @@ class App extends React.Component {
           product.price = Number.parseFloat(product.price).toFixed(2);
           return product;
         });
-        const { firstItemInView, numItemsToDisplay } = this.state;
-        const currentItemsInView = formatted.slice(firstItemInView, numItemsToDisplay);
         // eslint-disable-next-line no-unused-vars
         this.setState((state) => ({
           relatedProducts: formatted,
-          itemsInView: currentItemsInView,
         }));
+      })
+      .then(() => {
+        this.updateNumItemsToDisplay();
       })
       .catch((err) => console.error('Failed to load product data. => ', err));
   }
@@ -101,15 +99,20 @@ class App extends React.Component {
     this.setState((state) => ({ showFeedbackLinks: !state.showFeedbackLinks }));
   }
 
-  updateViewportWidth() {
+  updateNumItemsToDisplay() {
+    const { relatedProducts } = this.state;
     const viewportWidth = window.innerWidth;
-    this.setState({
-      windowWidth: viewportWidth,
-    });
+    const itemCount = Math.floor((viewportWidth - 100) / 170);
+    const newGap = (viewportWidth - 100 - (itemCount * 160)) / itemCount;
+    this.setState((state) => ({
+      numItemsToDisplay: itemCount,
+      itemsInView: relatedProducts.slice(state.firstItemInView, state.firstItemInView + itemCount),
+      itemGap: newGap,
+    }));
   }
 
   render() {
-    const { itemsInView, showFeedbackLinks } = this.state;
+    const { itemsInView, showFeedbackLinks, itemGap } = this.state;
     if (itemsInView.length > 0) {
       return (
         <div className={style['sponsored-products-module-wrapper']}>
@@ -119,7 +122,7 @@ class App extends React.Component {
           </div>
           <div className={style['sponsored-products-list']}>
             <Arrow direction="left" nextPane={this.previous} />
-            <ProductList products={itemsInView} showLinks={showFeedbackLinks} />
+            <ProductList products={itemsInView} showLinks={showFeedbackLinks} itemGap={itemGap} />
             <Arrow direction="right" nextPane={this.next} />
           </div>
           <FeedbackToggle showLinks={showFeedbackLinks} toggleFeedback={this.toggleFeedback} />
