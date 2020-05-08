@@ -25,13 +25,20 @@ class App extends React.Component {
     this.previous = this.previous.bind(this);
     this.next = this.next.bind(this);
     this.toggleFeedback = this.toggleFeedback.bind(this);
+    this.updateViewportWidth = this.updateViewportWidth.bind(this);
   }
 
   componentDidMount() {
+    this.updateViewportWidth();
+    window.addEventListener('resize', this.updateViewportWidth);
     // eslint-disable-next-line no-undef
     const params = new URLSearchParams(document.location.search.substring(1));
     const id = params.get('id');
     this.getRelatedProducts(id);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateViewportWidth);
   }
 
   getRelatedProducts(id) {
@@ -41,8 +48,8 @@ class App extends React.Component {
           product.price = Number.parseFloat(product.price).toFixed(2);
           return product;
         });
-        const { numItemsToDisplay } = this.state;
-        const currentItemsInView = formatted.slice(0, numItemsToDisplay);
+        const { firstItemInView, numItemsToDisplay } = this.state;
+        const currentItemsInView = formatted.slice(firstItemInView, numItemsToDisplay);
         // eslint-disable-next-line no-unused-vars
         this.setState((state) => ({
           relatedProducts: formatted,
@@ -64,8 +71,22 @@ class App extends React.Component {
     }
   }
 
+  startOver() {
+    // This should return the first item in view to be at index 0.
+    this.setState({
+      firstItemInView: 0,
+    });
+  }
+
   toggleFeedback() {
     this.setState((state) => ({ showFeedbackLinks: !state.showFeedbackLinks }));
+  }
+
+  updateViewportWidth() {
+    const viewportWidth = window.innerWidth;
+    this.setState({
+      windowWidth: viewportWidth,
+    });
   }
 
   render() {
