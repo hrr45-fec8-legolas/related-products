@@ -73,6 +73,7 @@ class App extends React.Component {
     }
     this.setState((state) => ({
       itemsInView: relatedProducts.slice(state.firstItemInView, state.firstItemInView + state.numItemsToDisplay),
+      showFeedbackLinks: false,
     }));
   }
 
@@ -84,6 +85,7 @@ class App extends React.Component {
       }));
       this.setState((state) => ({
         itemsInView: relatedProducts.slice(state.firstItemInView, state.firstItemInView + state.numItemsToDisplay),
+        showFeedbackLinks: false,
       }));
     }
   }
