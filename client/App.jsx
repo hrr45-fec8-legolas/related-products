@@ -14,8 +14,12 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      products: [],
+      relatedProducts: [],
       showFeedbackLinks: false,
+      windowWidth: 0,
+      numItemsToDisplay: 10,
+      firstItemInView: 0,
+      itemsInView: [],
     };
     this.getRelatedProducts = this.getRelatedProducts.bind(this);
     this.previous = this.previous.bind(this);
@@ -33,9 +37,16 @@ class App extends React.Component {
   getRelatedProducts(id) {
     axios.get(`/api/related_products/${id}`)
       .then((results) => {
+        const formatted = results.data.map((product) => {
+          product.price = Number.parseFloat(product.price).toFixed(2);
+          return product;
+        });
+        const { numItemsToDisplay } = this.state;
+        const currentItemsInView = formatted.slice(0, numItemsToDisplay);
         // eslint-disable-next-line no-unused-vars
         this.setState((state) => ({
-          products: results.data,
+          relatedProducts: formatted,
+          itemsInView: currentItemsInView,
         }));
       })
       .catch((err) => console.error('Failed to load product data. => ', err));
@@ -58,8 +69,8 @@ class App extends React.Component {
   }
 
   render() {
-    const { products, showFeedbackLinks } = this.state;
-    if (products.length > 0) {
+    const { itemsInView, showFeedbackLinks } = this.state;
+    if (itemsInView.length > 0) {
       return (
         <div className={style['sponsored-products-module-wrapper']}>
           <div className={style['sponsored-products-meta']}>
@@ -68,7 +79,7 @@ class App extends React.Component {
           </div>
           <div className={style['sponsored-products-list']}>
             <Arrow direction="left" nextPane={this.previous} />
-            <ProductList products={products} showLinks={showFeedbackLinks} />
+            <ProductList products={itemsInView} showLinks={showFeedbackLinks} />
             <Arrow direction="right" nextPane={this.next} />
           </div>
           <FeedbackToggle showLinks={showFeedbackLinks} toggleFeedback={this.toggleFeedback} />
