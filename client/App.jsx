@@ -31,6 +31,7 @@ class App extends React.Component {
   componentDidMount() {
     this.updateViewportWidth();
     window.addEventListener('resize', this.updateViewportWidth);
+
     // eslint-disable-next-line no-undef
     const params = new URLSearchParams(document.location.search.substring(1));
     const id = params.get('id');
@@ -60,14 +61,30 @@ class App extends React.Component {
   }
 
   previous() {
-    if (this.state) {
-      // Do nothing for now
+    const { itemsInView, firstItemInView, numItemsToDisplay, relatedProducts } = this.state;
+    if (firstItemInView > numItemsToDisplay - 1) {
+      this.setState((state) => ({
+        firstItemInView: state.firstItemInView - numItemsToDisplay,
+      }));
+    } else {
+      this.setState((state) => ({
+        firstItemInView: 0,
+      }));
     }
+    this.setState((state) => ({
+      itemsInView: relatedProducts.slice(state.firstItemInView, state.firstItemInView + state.numItemsToDisplay),
+    }));
   }
 
   next() {
-    if (this.state) {
-      // Do nothing for now
+    const { itemsInView, firstItemInView, numItemsToDisplay, relatedProducts } = this.state;
+    if (firstItemInView < relatedProducts.length - numItemsToDisplay) {
+      this.setState((state) => ({
+        firstItemInView: state.firstItemInView + numItemsToDisplay,
+      }));
+      this.setState((state) => ({
+        itemsInView: relatedProducts.slice(state.firstItemInView, state.firstItemInView + state.numItemsToDisplay),
+      }));
     }
   }
 
