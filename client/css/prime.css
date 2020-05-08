@@ -1,0 +1,19 @@
+.amazon-words {
+  background-image: url('https://hrr45-fec8-legolas.s3-us-west-2.amazonaws.com/Amazon_ui-icon-beacon_light.png');
+  background-size: 512px 256px;
+  background-repeat: no-repeat;
+}
+
+.prime-wrapper {
+  position: relative;
+  top: 2px;
+  margin: 0 0 0 5px;
+}
+
+.prime {
+  composes: amazon-words;
+  width: 42px;
+  height: 12px;
+  background-position: -154px -52px;
+  display: inline-block;
+}
