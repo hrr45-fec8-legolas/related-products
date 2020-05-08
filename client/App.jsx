@@ -61,7 +61,7 @@ class App extends React.Component {
     const { products, showFeedbackLinks } = this.state;
     if (products.length > 0) {
       return (
-        <>
+        <div className={style['sponsored-products-module-wrapper']}>
           <div className={style['sponsored-products-meta']}>
             <h2>Sponsored products related to this item</h2>
             <PageCount />
@@ -72,7 +72,7 @@ class App extends React.Component {
             <Arrow direction="right" nextPane={this.next} />
           </div>
           <FeedbackToggle showLinks={showFeedbackLinks} toggleFeedback={this.toggleFeedback} />
-        </>
+        </div>
       );
     }
     return (

@@ -2,6 +2,21 @@
   display: flex;
   flex-flow: row nowrap;
   justify-content: flex-end;
+  font-size: 11px;
+}
+
+.feedback-toggle a {
+  padding: 0 19px 2px 0;
+  line-height: 11px;
+  margin: 0 0 0 2px;
+  display: inline-block;
+  background: url() right 0 no-repeat;
+  background-size: 15px;
+}
+
+.feedback-toggle a:hover {
+  color: #E47911;
+  background: url() right -13px no-repeat;
 }
 
 .item-feedback-link {
@@ -28,6 +43,6 @@
 }
 
 .item-feedback-link a:hover {
-  color: #F69931;
+  color: #c45500;
   background: url('https://hrr45-fec8-legolas.s3-us-west-2.amazonaws.com/Amazon_feedback_bubble.png') no-repeat 130px -12px;
 }

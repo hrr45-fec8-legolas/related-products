@@ -11,8 +11,10 @@ const ProductListItem = ({ product, showLinks }) => {
   return (
     <div className={style['single-product']}>
       <FeedbackLink showLinks={showLinks} />
-      <img src={imageUrl} alt={name} />
-      <div className="product-title">{name}</div>
+      <a href="#">
+        <img src={imageUrl} alt={name} />
+        <div className={style['product-title']}>{name}</div>
+      </a>
       <div className="product-ratings">
         <span className={avgRating > 4.7 ? style['stars-5']
           : avgRating > 4.2 ? style['stars-4-5']
