@@ -7,7 +7,9 @@ const PageCount = ({ firstItem, page, pages, startOver }) => {
     );
   }
   return (
-    <div>Page 1 of {pages}</div>
+    <div>
+      Page 1 of {pages}
+    </div>
   );
 };
 

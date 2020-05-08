@@ -60,7 +60,7 @@ class App extends React.Component {
   }
 
   previous() {
-    const { itemsInView, firstItemInView, numItemsToDisplay, relatedProducts } = this.state;
+    const { firstItemInView, numItemsToDisplay, relatedProducts } = this.state;
     if (firstItemInView > numItemsToDisplay - 1) {
       this.setState((state) => ({
         firstItemInView: state.firstItemInView - numItemsToDisplay,
@@ -77,7 +77,7 @@ class App extends React.Component {
   }
 
   next() {
-    const { itemsInView, firstItemInView, numItemsToDisplay, relatedProducts } = this.state;
+    const { firstItemInView, numItemsToDisplay, relatedProducts } = this.state;
     if (firstItemInView < relatedProducts.length - numItemsToDisplay) {
       this.setState((state) => ({
         firstItemInView: state.firstItemInView + numItemsToDisplay,
