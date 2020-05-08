@@ -10,13 +10,14 @@
   line-height: 11px;
   margin: 0 0 0 2px;
   display: inline-block;
-  background: url() right 0 no-repeat;
+  background: url('https://hrr45-fec8-legolas.s3-us-west-2.amazonaws.com/Amazon_feedback-sprite.png') right 0 no-repeat;
   background-size: 15px;
 }
 
 .feedback-toggle a:hover {
   color: #E47911;
-  background: url() right -13px no-repeat;
+  background: url('https://hrr45-fec8-legolas.s3-us-west-2.amazonaws.com/Amazon_feedback-sprite.png') right -13px no-repeat;
+  background-size: 15px;
 }
 
 .item-feedback-link {

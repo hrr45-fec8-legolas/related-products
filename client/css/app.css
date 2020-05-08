@@ -20,9 +20,9 @@
   font-family: Arial, sans-serif;
 }
 
-.hover-color {
+/* .hover-color {
   color: #F69931;
-}
+} */
 
 .sponsored-products-meta {
   composes: heading-font;
