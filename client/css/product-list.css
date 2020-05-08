@@ -1,5 +1,5 @@
 .related-product-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, 160px);
-  gap: 1em;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
 }
