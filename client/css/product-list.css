@@ -1,5 +1,7 @@
 .related-product-list {
   display: flex;
   flex-flow: row nowrap;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  width: calc(100vw - 80px);
+  margin: 0 auto;
 }

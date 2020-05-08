@@ -34,5 +34,6 @@
 }
 
 .sponsored-products-list {
-
+  display: flex;
+  flex-flow: row nowrap;
 }
