@@ -76,3 +76,31 @@
   composes: stars;
   background-position: -85px -368px;
 }
+
+.total-reviews {
+  margin-left: 5px;
+}
+
+/* .product-ratings-wrapper a:hover {
+  text-decoration: none;
+  color: black;
+} */
+
+a.no-change-on-hover:hover {
+  text-decoration: none;
+  color: #0066C0;
+}
+
+.price {
+  color: #B12704;
+  font-size: 17px;
+  line-height: 1.255;
+}
+
+.price:before {
+  content: '$';
+}
+
+ .price:hover {
+   text-decoration: none !important;
+ }

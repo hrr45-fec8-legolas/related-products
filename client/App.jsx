@@ -33,9 +33,14 @@ class App extends React.Component {
   getRelatedProducts(id) {
     axios.get(`/api/related_products/${id}`)
       .then((results) => {
+
+        const formatted = results.data.map((product) => {
+          product.price = Number.parseFloat(product.price).toFixed(2);
+          return product;
+        });
         // eslint-disable-next-line no-unused-vars
         this.setState((state) => ({
-          products: results.data,
+          products: formatted,
         }));
       })
       .catch((err) => console.error('Failed to load product data. => ', err));
