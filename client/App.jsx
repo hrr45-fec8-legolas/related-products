@@ -159,4 +159,4 @@ class App extends React.Component {
 }
 
 // eslint-disable-next-line no-undef
-ReactDOM.render(<App />, document.getElementById('srp-app'));
+ReactDOM.render(<App />, document.getElementById('sponsored-related-products'));
