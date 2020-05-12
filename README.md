@@ -17,7 +17,7 @@
 
 ## Usage
 
-> This component uses mysql for a DBMS. Please ensure that mysql is running and execute `npm run seed` to seed your database.
+> This component uses mysql for a DBMS. Please ensure that mysql is running and import the schema.sql file, then execute `npm run seed` to seed your database.
 
 - `npm run build` Runs webpack in production mode
 - `npm start` Starts server listening on port 3003
