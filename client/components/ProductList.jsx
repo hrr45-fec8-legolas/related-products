@@ -4,12 +4,13 @@ import propTypes from 'prop-types';
 import styles from '../css/product-list.css';
 import ProductListItem from './ProductListItem';
 
-const ProductList = ({ products, showLinks, itemGap }) => {
+const ProductList = ({ products, showLinks, itemGap, openModal }) => {
   const prods = products.map((product) => (
     <ProductListItem
       key={product.productId}
       product={product}
       showLinks={showLinks}
+      openModal={openModal}
     />
   ));
   return (

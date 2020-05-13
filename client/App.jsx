@@ -24,6 +24,7 @@ class App extends React.Component {
     this.getRelatedProducts = this.getRelatedProducts.bind(this);
     this.next = this.next.bind(this);
     this.previous = this.previous.bind(this);
+    this.openModal = this.openModal.bind(this);
     this.startOver = this.startOver.bind(this);
     this.toggleFeedback = this.toggleFeedback.bind(this);
     this.updateNumItemsToDisplay = this.updateNumItemsToDisplay.bind(this);
@@ -89,7 +90,12 @@ class App extends React.Component {
     }
   }
 
-  startOver() {
+  openModal(e, product) {
+    e.preventDefault();
+  }
+
+  startOver(e) {
+    e.preventDefault();
     // This should return the first item in view to be at index 0.
     this.setState((state) => ({
       firstItemInView: 0,
@@ -142,7 +148,7 @@ class App extends React.Component {
           </div>
           <div className={style['sponsored-products-list']}>
             <Arrow direction="left" nextPane={this.previous} />
-            <ProductList products={itemsInView} showLinks={showFeedbackLinks} itemGap={itemGap} />
+            <ProductList products={itemsInView} showLinks={showFeedbackLinks} itemGap={itemGap} openModal={this.openModal} />
             <Arrow direction="right" nextPane={this.next} />
           </div>
           <FeedbackToggle showLinks={showFeedbackLinks} toggleFeedback={this.toggleFeedback} />
