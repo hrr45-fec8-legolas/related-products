@@ -1,5 +1,7 @@
 .single-product {
   position: relative;
+  width: 160px;
+  height: 277px;
 }
 
 .single-product img {

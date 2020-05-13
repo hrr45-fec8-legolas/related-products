@@ -6,7 +6,7 @@ const FeedbackLink = ({ showLinks, openModal, product }) => {
   if (showLinks) {
     return (
       <div className={style['item-feedback-link']}>
-        <a href="#" onClick={() => openModal(product)}>
+        <a href="" onClick={(e) => openModal(e, product)}>
           Feedback
         </a>
       </div>
