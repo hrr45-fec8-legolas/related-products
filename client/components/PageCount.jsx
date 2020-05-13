@@ -3,7 +3,7 @@ import React from 'react';
 const PageCount = ({ firstItem, page, pages, startOver }) => {
   if (firstItem) {
     return (
-      <div>Page {page} of {pages} <span>|</span> <a href="#" onClick={startOver}>Start over</a></div>
+      <div>Page {page} of {pages} <span>|</span> <a href="" onClick={(e) => startOver(e)}>Start over</a></div>
     );
   }
   return (

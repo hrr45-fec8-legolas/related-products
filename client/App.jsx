@@ -100,7 +100,8 @@ class App extends React.Component {
     }));
   }
 
-  toggleFeedback() {
+  toggleFeedback(e) {
+    e.preventDefault();
     this.setState((state) => ({ showFeedbackLinks: !state.showFeedbackLinks }));
   }
 

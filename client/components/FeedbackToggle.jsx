@@ -8,7 +8,7 @@ const FeedbackToggle = ({ showLinks, toggleFeedback }) => {
   if (showLinks) {
     return (
       <div className={style['feedback-toggle']}>
-        <a href="#" onClick={toggleFeedback}>
+        <a href="" onClick={(e) => toggleFeedback(e)}>
           Hide feedback
         </a>
       </div>
@@ -16,7 +16,7 @@ const FeedbackToggle = ({ showLinks, toggleFeedback }) => {
   }
   return (
     <div className={style['feedback-toggle']}>
-      <a href="#" onClick={toggleFeedback}>
+      <a href="" onClick={(e) => toggleFeedback(e)}>
         Ad feedback
       </a>
     </div>
