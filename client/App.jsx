@@ -114,8 +114,8 @@ class App extends React.Component {
   updateNumItemsToDisplay() {
     const { relatedProducts } = this.state;
     const appWidth = document.getElementById('sponsored-related-products').clientWidth;
-    const itemCount = Math.floor((appWidth - 100) / 170);
-    const newGap = (appWidth - 155 + 36 - (itemCount * 160)) / itemCount;
+    const itemCount = Math.floor((appWidth - 92) / 170);
+    const newGap = (appWidth - 92 - (itemCount * 160)) / itemCount;
     this.setState((state) => ({
       numItemsToDisplay: itemCount,
       itemsInView: relatedProducts.slice(state.firstItemInView, state.firstItemInView + itemCount),
