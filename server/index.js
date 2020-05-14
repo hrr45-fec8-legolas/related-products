@@ -4,7 +4,7 @@ const routes = require('./routes');
 
 const app = express();
 const port = process.env.PORT || 3003;
-// console.log(__dirname);
+
 app.use(express.static(path.join(__dirname, '/../public')));
 
 app.use(express.json());
