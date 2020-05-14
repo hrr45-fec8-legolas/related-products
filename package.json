@@ -10,7 +10,7 @@
   "scripts": {
     "build": "webpack --config webpack.config.js --mode production",
     "build-dev": "webpack --config webpack.config.js --watch --mode development",
-    "seed": "node server/database/seed.js",
+    "seed": "node -r dotenv/config server/database/seed.js",
     "server-dev": "nodemon -r dotenv/config server/",
     "start": "node -r dotenv/config server/",
     "test": "jest --verbose --detectOpenHandles",
