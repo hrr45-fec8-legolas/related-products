@@ -1,5 +1,5 @@
 .related-product-list {
-  width: calc(100vw - 100px);
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fit, 160px);
   margin: 0 10px;
