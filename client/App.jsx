@@ -155,13 +155,7 @@ class App extends React.Component {
         </div>
       );
     }
-    return (
-      <>
-        <div className={style['sponsored-products-meta']}>
-          <h2>No product selected.</h2>
-        </div>
-      </>
-    );
+    return null;
   }
 }
 
