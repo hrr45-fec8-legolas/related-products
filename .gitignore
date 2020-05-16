@@ -26,5 +26,5 @@ public/
 !public/*.html
 
 # Environment Variables
-.env
+.env*
 
