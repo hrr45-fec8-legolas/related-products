@@ -20,6 +20,8 @@ class App extends React.Component {
       firstItemInView: 0,
       itemsInView: [],
       itemGap: 10,
+      notRelated: {},
+      feedbackSent: false,
     };
     this.getRelatedProducts = this.getRelatedProducts.bind(this);
     this.next = this.next.bind(this);
