@@ -47,3 +47,183 @@
   color: #c45500;
   background: url('https://d1ivqy59bo7rzu.cloudfront.net/Amazon_feedback_bubble.png') no-repeat 130px -12px;
 }
+
+/************************************************
+ *
+ *  CSS for feedback modal
+ *
+ *************************************************/
+
+ .feedback-modal-background {
+  position: absolute;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.4);
+  width: 100%;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ }
+
+ .popover-wrapper {
+  background: white;
+  width: 350px;
+  border: 1px solid;
+  border-color: rgba(0,0,0,.75);
+  box-shadow: 0 4px 6px rgba(0,0,0,.25);
+  overflow: hidden;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,.13);
+ }
+
+ .popover-header {position: relative;
+  text-align: left;
+  background: #f2f2f2;
+  background: #f1f1f1;
+  background: -webkit-linear-gradient(top,#f7f7f7,#eaeaea);
+  background: linear-gradient(to bottom,#f7f7f7,#eaeaea);
+  border-radius: 4px 4px 0 0;
+  border-bottom: 1px solid #cdcdcd;
+  border-bottom-color: rgba(0,0,0,.2);
+  box-shadow: 0 1px 0 rgba(255,255,255,.5) inset, 0 -1px 0 rgba(255,255,255,.4) inset;
+  padding: 0 14px;
+  margin: 0;
+  z-index: 10;
+ }
+
+ .popover-header-content {
+  line-height: 16px;
+  padding: 10px 0 9px;
+  font-size: 13px;
+  font-weight: 700;
+  margin: 0 20px 0 0;
+ }
+
+ .popover-inner {
+  background-color: #fff;
+  padding: 14px 18px;
+  text-align: left;
+  overflow-x: hidden;
+ }
+
+ .feedback-content {
+  display: block;
+  border-radius: 4px;
+  border: 1px #ddd solid;
+  background-color: #fff;
+  border-color: #7fc87f;
+  margin-bottom: 14px;
+ }
+
+ .feedback-success {
+  background-color: #fff;
+  box-shadow: 0 0 0 4px #dff7df inset;
+  padding-left: 60px !important;
+  border-radius: 4px;
+  position: relative;
+  padding: 14px 18px;
+ }
+
+ .feedback-sent {
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 1.255;
+  color: #007600;
+  padding: 0;
+  margin: 0;
+  padding-bottom: 4px;
+ }
+
+ .feedback-success i {
+  height: 27px;
+  width: 30px;
+  position: absolute;
+  left: 18px;
+  top: 11px;
+  background-position: -318px -35px;
+  background-image: url('https://d1ivqy59bo7rzu.cloudfront.net/Amazon_ui-icon-sprite-sheet.png');
+  -webkit-background-size: 400px 900px;
+  background-size: 400px 900px;
+  background-repeat: no-repeat;
+  display: inline-block;
+  vertical-align: top;
+ }
+
+ .popover-footer {
+  text-align: right;
+  background-color: #f3f3f3;
+  background: #f9f9f9;
+  background: -webkit-linear-gradient(top,#f3f3f3,#fff);
+  background: linear-gradient(to bottom,#f3f3f3,#fff);
+  box-shadow: 0 1px 1px rgba(0,0,0,.05) inset;
+  border-top: 1px solid #ddd;
+  padding: 14px;
+  margin: 0;
+  border-radius: 0 0 4px 4px;
+ }
+
+ .popover-button {
+  background: #e7e9ec;
+  border-radius: 3px;
+  border-color: #ADB1B8 #A2A6AC #8D9096;
+  border-style: solid;
+  border-width: 1px;
+  cursor: pointer;
+  display: inline-block;
+  padding: 10px;
+  margin-left: 5px;
+  text-align: center;
+  text-decoration: none!important;
+  vertical-align: middle;
+  box-shadow: 0 1px 0 rgba(255,255,255,.4) inset;
+ }
+
+ .close-window {
+  background: #f0c14b;
+  border-color: #a88734 #9c7e31 #846a29;
+  color: #111;
+ }
+
+ /******************* Item feedback form ***********/
+
+ .item-display {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 10px;
+}
+
+.item-display img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+}
+
+.product-price {
+  color: #B12704;
+}
+
+.product-price:before {
+  content: '$';
+}
+
+
+.feedback-form {
+
+}
+
+.feedback-form fieldset {
+  border: none;
+}
+
+.feedback-form fieldset label {
+  display: block;
+}
+
+.form-label {
+  display: block;
+  font-weight: 700;
+}

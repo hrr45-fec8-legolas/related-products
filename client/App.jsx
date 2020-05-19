@@ -7,6 +7,7 @@ import PageCount from './components/PageCount';
 import Arrow from './components/Arrow';
 import ProductList from './components/ProductList';
 import FeedbackToggle from './components/FeedbackToggle';
+import FeedbackModal from './components/FeedbackModal';
 
 
 // console.log('Webpack is watching for changes!');
@@ -27,6 +28,8 @@ class App extends React.Component {
     this.next = this.next.bind(this);
     this.previous = this.previous.bind(this);
     this.openModal = this.openModal.bind(this);
+    this.sendFeedback = this.sendFeedback.bind(this);
+    this.hideModal = this.hideModal.bind(this);
     this.startOver = this.startOver.bind(this);
     this.toggleFeedback = this.toggleFeedback.bind(this);
     this.updateNumItemsToDisplay = this.updateNumItemsToDisplay.bind(this);
@@ -59,8 +62,34 @@ class App extends React.Component {
       .then(() => {
         this.updateNumItemsToDisplay();
       })
-      .catch((err) => console.error('Failed to load product data. => ', err));
+      .catch((err) => console.error('Failed to load product data.'));
   }
+
+  openModal(e, product) {
+    e.preventDefault();
+    this.setState({
+      notRelated: product,
+    });
+  }
+
+  hideModal() {
+    this.setState({
+      notRelated: {},
+      feedbackSent: false,
+    });
+  }
+
+  sendFeedback(unrelated) {
+    const params = new URLSearchParams(document.location.search.substring(1));
+    const id = params.get('id');
+    axios.post(`/api/related_products/${id}/feedback/${unrelated}`)
+      .then((results) => {
+        this.setState({
+          feedbackSent: true,
+        });
+      })
+      .catch((err) => console.error('Feedback not saved.'));
+    }
 
   previous() {
     const { firstItemInView, numItemsToDisplay, relatedProducts } = this.state;
@@ -90,10 +119,6 @@ class App extends React.Component {
         showFeedbackLinks: false,
       }));
     }
-  }
-
-  openModal(e, product) {
-    e.preventDefault();
   }
 
   startOver(e) {
@@ -133,6 +158,8 @@ class App extends React.Component {
       firstItemInView,
       relatedProducts,
       numItemsToDisplay,
+      notRelated,
+      feedbackSent,
     } = this.state;
     const totalPages = Math.ceil(relatedProducts.length / numItemsToDisplay);
     const currentPage = Math.ceil(firstItemInView / numItemsToDisplay) + 1;
@@ -150,10 +177,18 @@ class App extends React.Component {
           </div>
           <div className={style['sponsored-products-list']}>
             <Arrow direction="left" nextPane={this.previous} />
-            <ProductList products={itemsInView} showLinks={showFeedbackLinks} itemGap={itemGap} openModal={this.openModal} />
+            <ProductList
+              products={itemsInView}
+              showLinks={showFeedbackLinks}
+              itemGap={itemGap}
+              openModal={this.openModal}
+              sendFeedback={this.sendFeedback}
+              hideModal={this.hideModal}
+            />
             <Arrow direction="right" nextPane={this.next} />
           </div>
           <FeedbackToggle showLinks={showFeedbackLinks} toggleFeedback={this.toggleFeedback} />
+          <FeedbackModal product={notRelated} send={this.sendFeedback} sent={feedbackSent} hide={this.hideModal} />
         </div>
       );
     }
