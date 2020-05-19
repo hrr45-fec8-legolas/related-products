@@ -10,7 +10,11 @@ const ProductListItem = ({ product, showLinks, openModal }) => {
   const { productId, name, imageUrl, avgRating, numReviews, price, prime } = product;
   return (
     <div className={style['single-product']}>
-      <FeedbackLink showLinks={showLinks} openModal={openModal} product={product} />
+      <FeedbackLink
+        showLinks={showLinks}
+        openModal={openModal}
+        product={product}
+      />
       <a href="#">
         <img src={imageUrl} alt={name} />
         <div className={style['product-title']}>{name}</div>

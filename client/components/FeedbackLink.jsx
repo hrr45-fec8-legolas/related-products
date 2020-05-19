@@ -2,7 +2,7 @@ import React from 'react';
 
 import style from '../css/feedback.css';
 
-const FeedbackLink = ({ showLinks, openModal, product }) => {
+const FeedbackLink = ({ showLinks, product, openModal }) => {
   if (showLinks) {
     return (
       <div className={style['item-feedback-link']}>
