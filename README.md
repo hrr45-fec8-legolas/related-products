@@ -2,6 +2,9 @@
 
 > Replication of a popular e-commerce site's basic product page. This repo is for a single component - the sponsored related posts carousel.
 
+![Carousel of related products.](https://geophray.s3-us-west-2.amazonaws.com/public/related-products.png "Related Products Carousel")
+
+
 ## Related Projects
 
   - https://github.com/hrr45-fec8-legolas/single-item-page
