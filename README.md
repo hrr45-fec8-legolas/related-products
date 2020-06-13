@@ -1,4 +1,4 @@
-# Big Brother Retail - Sponsored Related Products Component
+# Good eCom Retail - Sponsored Related Products Component
 
 > Replication of a popular e-commerce site's basic product page. This repo is for a single component - the sponsored related posts carousel.
 
