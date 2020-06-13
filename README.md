@@ -13,7 +13,7 @@
 
 1. [Usage](#Usage)
 1. [Requirements](#requirements)
-1. [Technologies Used](#technologies used)
+1. [Technologies Used](#technologies_used)
 1. [Development](#development)
 
 ## Usage
