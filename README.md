@@ -13,6 +13,7 @@
 
 1. [Usage](#Usage)
 1. [Requirements](#requirements)
+1. [Technologies Used](#technologies used)
 1. [Development](#development)
 
 ## Usage
@@ -29,6 +30,18 @@ Visit http://localhost:3003/?id=[id] to view the related products for product id
 An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 
 - Node 10.15.3
+
+## Technologies Used
+
+- Node.js
+- Express
+- MySQL
+- Axios
+- React
+- Webpack / Babel
+- CSS Modules
+- Jest / Enzyme / Puppeteer
+- Docker
 
 ## Development
 
