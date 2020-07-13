@@ -54,10 +54,9 @@ class App extends React.Component {
           product.price = Number.parseFloat(product.price).toFixed(2);
           return product;
         });
-        // eslint-disable-next-line no-unused-vars
-        this.setState((state) => ({
+        this.setState({
           relatedProducts: formatted,
-        }));
+        });
       })
       .then(() => {
         this.updateNumItemsToDisplay();
@@ -196,5 +195,4 @@ class App extends React.Component {
   }
 }
 
-// eslint-disable-next-line no-undef
 ReactDOM.render(<App />, document.getElementById('sponsored-related-products'));
