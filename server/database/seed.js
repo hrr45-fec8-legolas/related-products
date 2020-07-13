@@ -24,8 +24,11 @@ async function seedDatabase() {
       faker.commerce.productName(),
       faker.commerce.price(),
       Math.floor(Math.random() * 2),
-      i > imglen ? `https://d1ivqy59bo7rzu.cloudfront.net/${images[i % imglen]}` : `https://d1ivqy59bo7rzu.cloudfront.net/${images[i]}`,
-      faker.random.number(),
+      i > imglen ? `https://d2hg04dbbn52o.cloudfront.net/product-images/${images[i % imglen]}` : `https://d2hg04dbbn52o.cloudfront.net/product-images/${images[i]}`,
+      faker.random.number({
+        'min': 49,
+        'max': 3901
+      }),
       (Math.floor((Math.random() * 6) + 5)) / 2,
     ]);
     i += 1;
