@@ -65,7 +65,7 @@ const FeedbackModal = ({ product, send, sent, hide }) => {
                       <input type="radio" name="type" value="other" /> Other
                     </label>
                   </fieldset>
-                  <label className={style['form-label']} for="comment">
+                  <label className={style['form-label']} htmlFor="comment">
                     Comments
                   </label>
                   <textarea id="comment"></textarea>
