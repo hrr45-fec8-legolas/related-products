@@ -7,18 +7,16 @@ describe('Test the related_objects endpoint', () => {
       .get('/api/related_products/1')
       .expect('Content-Type', /json/)
       .expect(200)
-      .end(done)
+      .end(done);
   });
 
   test('Should not contain object id of 1 in results for request to /?id=1', (done) => {
     request(app)
-    .get('/api/related_products/1')
-      .expect(function(res) {
-        const productIds = res.body.map(obj => {
-          return obj.productId;
-        });
-        if(productIds.includes(1)) throw new Error('Related products should not include the current product.');
+      .get('/api/related_products/1')
+      .expect((res) => {
+        const productIds = res.body.map((obj) => obj.productId);
+        if (productIds.includes(1)) throw new Error('Related products should not include the current product.');
       })
-      .end(done)
+      .end(done);
   });
 });
