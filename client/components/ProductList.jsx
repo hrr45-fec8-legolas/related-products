@@ -11,6 +11,7 @@ const ProductList = ({ products, showLinks, itemGap, openModal }) => {
       product={product}
       showLinks={showLinks}
       openModal={openModal}
+      url={createRelatedUrl(product.productId)}
     />
   ));
   return (
@@ -19,6 +20,12 @@ const ProductList = ({ products, showLinks, itemGap, openModal }) => {
     </div>
   );
 };
+
+const createRelatedUrl = (productId) => {
+  let url = new URLSearchParams(document.location.search.slice(1));
+  url.set('id', productId);
+  return '?' + url.toString();
+}
 
 ProductList.propTypes = {
   products: propTypes.arrayOf(propTypes.shape({})),

@@ -6,7 +6,7 @@ import style from '../css/product-list-item.css';
 import FeedbackLink from './FeedbackLink';
 import Prime from './Prime';
 
-const ProductListItem = ({ product, showLinks, openModal }) => {
+const ProductListItem = ({ product, showLinks, openModal, url }) => {
   const { productId, name, imageUrl, avgRating, numReviews, price, prime } = product;
   return (
     <div className={style['single-product']}>
@@ -15,12 +15,12 @@ const ProductListItem = ({ product, showLinks, openModal }) => {
         openModal={openModal}
         product={product}
       />
-      <a href="#">
+      <a href={url}>
         <img src={imageUrl} alt={name} />
         <div className={style['product-title']}>{name}</div>
       </a>
       <div>
-        <a className={style['no-change-on-hover']} href="#">
+        <a className={style['no-change-on-hover']} href={url}>
           <i className={avgRating > 4.7 ? style['stars-5']
             : avgRating > 4.2 ? style['stars-4-5']
             : avgRating > 3.7 ? style['stars-4']
@@ -37,7 +37,7 @@ const ProductListItem = ({ product, showLinks, openModal }) => {
         </a>
       </div>
       <div className="product-pricing">
-        <a className={style['no-change-on-hover']} href="#">
+        <a className={style['no-change-on-hover']} href={url}>
           <span className={style['price']}>{product.price}</span>
         </a>
         <Prime isPrime={product.prime} />
