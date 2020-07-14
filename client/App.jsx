@@ -71,11 +71,15 @@ class App extends React.Component {
     });
   }
 
-  hideModal() {
-    this.setState({
-      notRelated: {},
-      feedbackSent: false,
-    });
+  hideModal(e) {
+    e.preventDefault();
+    const closeIds = ['feedback-modal-background', 'cancel-feedback'];
+    if (closeIds.includes(e.target.id)){
+      this.setState({
+        notRelated: {},
+        feedbackSent: false,
+      });
+    }
   }
 
   sendFeedback(unrelated) {
