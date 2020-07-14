@@ -36,7 +36,7 @@ const FeedbackModal = ({ product, send, sent, hide }) => {
       )
     } else {
       return (
-        <div className={style['feedback-modal-background']} onClick={hide}>
+        <div id='feedback-modal-background' className={style['feedback-modal-background']} onClick={hide}>
           <div className={style['popover-wrapper']}>
             <header className={style['popover-header']}>
               <h4 className={style['popover-header-content']}>
@@ -65,7 +65,7 @@ const FeedbackModal = ({ product, send, sent, hide }) => {
                       <input type="radio" name="type" value="other" /> Other
                     </label>
                   </fieldset>
-                  <label className={style['form-label']} for="comment">
+                  <label className={style['form-label']} htmlFor="comment">
                     Comments
                   </label>
                   <textarea id="comment"></textarea>
@@ -74,7 +74,7 @@ const FeedbackModal = ({ product, send, sent, hide }) => {
             </div>
             <div className={style['popover-footer']}>
               <div className={style['sponsored-products-feedback-footer']}>
-                <button className={`${style['popover-button']}`} onClick={hide}>Cancel</button><button className={`${style['close-window']} ${style['popover-button']}`} onClick={send}>Send Feedback</button>
+                <button id='cancel-feedback' className={`${style['popover-button']}`} onClick={hide}>Cancel</button><button className={`${style['close-window']} ${style['popover-button']}`} onClick={send}>Send Feedback</button>
               </div>
             </div>
           </div>
